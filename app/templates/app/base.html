@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnomarket</title>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,700;1,600&display=swap" rel="stylesheet">
+
+    {% load static %}
+    {% block css %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'app/css/estilos.css' %}">
+</head>
+<body>
+
+
+    <header id="header">
+        <img class="menu" src="{% static 'app/img/menuiconwhite.png' %}" alt="menu" id="menu">
+        <div class="contenedor_logo">
+            <img  class="logo"  src="{% static 'app/img/tecnomarketpngicono.png' %}" alt="logo">
+        </div>
+
+        <div>
+            <nav id="nav">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}"> Inicio </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contacto' %}">Contacto</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'galeria' %}">Galería</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="contenido">
+        {% block contenido %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <div class="marcas">
+            <img src="{% static 'app/img/footer/apple.png' %}" alt="apple">
+            <img src="{% static 'app/img/footer/lenovo.png' %}" alt="lenovo">
+            <img src="{% static 'app/img/footer/microsoft.png' %}" alt="microsoft">
+            <img src="{% static 'app/img/footer/samsung.png' %}" alt="samsung">
+            <img src="{% static 'app/img/footer/xiaomi.png' %}" alt="xiaomi">
+        </div>
+        <div class="logo_footer">
+            <img src="{% static 'app/img/tecnomarketpngicono.png' %}" alt="logo">
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'app/js/menu.js' %}"></script>
+
+    {% block js %}
+    {% endblock %}
+</body>
+</html>

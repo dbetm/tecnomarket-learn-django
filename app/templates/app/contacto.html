@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block contenido %}
+<h2>Contactanos</h2>
+<form action="" class="formulario_contacto" method="post">
+    {% csrf_token %}
+
+    {{ form }}
+
+    <br>
+    <button type="submit" id="btnEnviar" class="button">Enviar</button>
+</form>
+
+{{ mensaje }}
+
+<table id="tablacontactos">
+</table>
+
+{% endblock %}
