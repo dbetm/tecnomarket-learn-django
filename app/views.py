@@ -5,6 +5,7 @@ from .forms import ContactoForm, CustomUserCreationForm, ProductoForm
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 
@@ -30,9 +31,11 @@ def contacto(request):
 
     return render(request, 'app/contacto.html', context=data)
 
+@login_required()
 def galeria(request):
     return render(request, 'app/galeria.html')
 
+@permission_required('app.add_producto')
 def agregar_producto(request):
     data = {
         'form': ProductoForm()
@@ -50,6 +53,7 @@ def agregar_producto(request):
 
     return render(request, 'app/producto/agregar.html', context=data)
 
+@permission_required('app.view_producto')
 def listar_productos(request):
     productos = Producto.objects.all()
 
@@ -67,6 +71,7 @@ def listar_productos(request):
 
     return render(request, 'app/producto/listar.html', context=data)
 
+@permission_required('app.change_producto')
 def modificar_producto(request, id):
 
     producto = get_object_or_404(Producto, id=id)
@@ -91,6 +96,7 @@ def modificar_producto(request, id):
 
     return render(request, 'app/producto/modificar.html', context=data)
 
+@permission_required('app.delete_producto')
 def eliminar_producto(request, id):
     producto =get_object_or_404(Producto, id=id)
     producto.delete()
