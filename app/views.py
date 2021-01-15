@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto
 from .forms import ContactoForm, ProductoForm
@@ -39,7 +40,7 @@ def agregar_producto(request):
 
         if formulario.is_valid():
             formulario.save()
-            data['mensaje'] = "Guardado correctamente"
+            messages.success(request, 'Producto agregado correctamente.')
         else:
             data['form'] = formulario
             data['mensaje'] = formulario.errors
@@ -69,6 +70,7 @@ def modificar_producto(request, id):
 
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, 'Producto modificado correctamente.')
             return redirect(to='listar_productos')
         data['form'] = formulario
         data['mensaje'] = formulario.errors
@@ -78,5 +80,7 @@ def modificar_producto(request, id):
 def eliminar_producto(request, id):
     producto =get_object_or_404(Producto, id=id)
     producto.delete()
+
+    messages.success(request, 'Producto eliminado correctamente.')
 
     return redirect(to='listar_productos')
