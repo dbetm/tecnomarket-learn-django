@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from .models import Contacto, Producto
 
 
@@ -25,3 +27,11 @@ class ProductoForm(forms.ModelForm):
                 years=reversed(range(current_year - 100, current_year + 1))
             )
         }
+
+
+class CustomUserCreationForm(UserCreationForm):
+    # Define fields to use
+
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']

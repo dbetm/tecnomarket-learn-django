@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
+        <title>Registro</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     </head>
@@ -14,16 +14,16 @@
                 <div class="col-12 col-md-6 offset-md-3">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Ingresa el sistema</h2>
+                            <h2>Registrar usuario</h2>
                             <hr>
                             <form class="" action="" method="post">
                                 {% csrf_token %}
                                 {{ form | crispy }}
                                 <div class="text-center">
                                     <a href="{% url 'home' %}">Ir al inicio</a> |
-                                    <a href="{% url 'registro' %}">Registro</a>
+                                    <a href="{% url 'login' %}">Iniciar sesión</a>
                                     &nbsp;
-                                    <input type="submit" name="" value="Iniciar sesión" class="btn btn-primary btn-lg mx-2 mt-3">
+                                    <input type="submit" name="" value="Registrar" class="btn btn-primary btn-lg mx-2 mt-3">
                                 </div>
                             </form>
                         </div>
