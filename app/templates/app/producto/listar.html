@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+
+{% load humanize %}
+
+{% block contenido %}
+
+<div class="card my-2">
+    <div class="card-body">
+        <h2>Lista de productos</h2>
+        <hr>
+        <table class="table table-striped table-hover table-responsive-sm my-2">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Marca</th>
+                <th>¿Es nuevo?</th>
+                <th>Opciones</th>
+            </tr>
+            {% for p in productos %}
+                <tr>
+                    <td>{{ p.nombre | title }}</td>
+                    <td>${{ p.precio | intcomma }}</td>
+                    <td>{{ p.marca | title }}</td>
+                    <td>
+                        {% if p.nuevo %}
+                        Sí
+                        {% else %}
+                        No
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'modificar_producto' p.id %}" class="btn btn-sm btn-info text-light">
+                            Modificar
+                        </a>
+                        <a href="{% url 'eliminar_producto' p.id %}" class="btn btn-sm btn-danger text-light">
+                            Eliminar
+                        </a
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}
