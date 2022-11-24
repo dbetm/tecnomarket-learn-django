@@ -17,6 +17,21 @@ def home(request):
     data = {'productos': productos}
     return render(request, 'app/home.html', context=data)
 
+
+class Device:
+    def __init__(self, ip):
+        self.ip = ip
+
+
+def scan(request):
+    data = dict()
+    # TODO
+
+    data["devices"] = ["dev1 - ip address", "dev2 - ip address"]
+
+    return render(request, "app/scan.html", context=data)
+
+
 def contacto(request):
     data = {
         'form': ContactoForm()

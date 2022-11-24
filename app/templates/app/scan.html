@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+
+{% block contenido %}
+
+<h2>Dispositivos</h2>
+<div class="productos">
+    {% for d in devices %}
+        <p>{{ d }}</p>
+        <p> ---- </p>
+    {% endfor %}
+</div>
+{% endblock %}
